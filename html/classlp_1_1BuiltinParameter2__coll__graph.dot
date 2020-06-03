@@ -1,0 +1,12 @@
+digraph "lp::BuiltinParameter2"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node4 [label="lp::BuiltinParameter2",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="lp::Builtin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classlp_1_1Builtin.html",tooltip="Definition of atributes and methods of Builtin class. "];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="lp::Symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classlp_1_1Symbol.html",tooltip="Definition of the class Symbol. "];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="lp::SymbolInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classlp_1_1SymbolInterface.html",tooltip="Prototype of the pure virtual methods. "];
+}
