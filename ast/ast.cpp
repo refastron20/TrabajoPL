@@ -1453,6 +1453,36 @@ void lp::AssignmentStmt::evaluate()
 				}
 			}
 			break;
+			case STRING:
+			{
+				/* Get the identifier of the previous asgn in the table of symbols as NumericVariable */
+				lp::StringVariable *secondVar = (lp::StringVariable *) table.getSymbol(this->_asgn->_id);
+				// Check the type of the first variable
+				if (firstVar->getType() == STRING)
+				{
+				/* Get the identifier of the first variable in the table of symbols as NumericVariable */
+				lp::StringVariable *firstVar = (lp::StringVariable *) table.getSymbol(this->_id);
+				  	// Get the identifier o f the in the table of symbols as NumericVariable
+//					lp::NumericVariable *n = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+					// Assignment the value of the second variable to the first variable
+					firstVar->setValue(secondVar->getValue());
+
+				}
+				// The type of variable is not NUMBER
+				else
+				{
+					// Delete the first variable from the table of symbols
+					table.eraseSymbol(this->_id);
+
+					// Insert the first variable in the table of symbols as NumericVariable
+					// with the type NUMBER and the value of the previous variable
+					lp::StringVariable *firstVar = new lp::StringVariable(this->_id,
+											VARIABLE,STRING,secondVar->getValue());
+					table.installSymbol(firstVar);
+				}
+			}
+			break;
 
 			default:
 				warning("Runtime error: incompatible type of expression for ", "Assigment");
@@ -1479,13 +1509,13 @@ void lp::WriteStmt::evaluate()
 	switch(this->_exp->getType())
 	{
 		case NUMBER:
-				std::cout << this->_exp->evaluateNumber() << std::endl;
+				std::cout << this->_exp->evaluateNumber();
 				break;
 		case BOOL:
 			if (this->_exp->evaluateBool())
-				std::cout << "true" << std::endl;
+				std::cout << "true";
 			else
-				std::cout << "false" << std::endl;
+				std::cout << "false";
 
 			break;
 

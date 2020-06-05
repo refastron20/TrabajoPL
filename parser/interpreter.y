@@ -381,10 +381,10 @@ read:  READ LPAREN VARIABLE RPAREN
 		}
 ;
 
-writestring:  WRITESTRING exp
+writestring:  WRITESTRING LPAREN exp RPAREN
 		{
 			// Create a new print node
-			 $$ = new lp::WriteStringStmt($2);
+			 $$ = new lp::WriteStringStmt($3);
 		}
 ;
 
